@@ -1,0 +1,8 @@
+.vs
+obj/
+bin/
+
+assets/
+package/
+output/
+sdk/
