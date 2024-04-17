@@ -4,14 +4,14 @@ A command line tool for formatting and recording data to Blu-ray Disc (e.g. BD-R
 
 ### Set PATH to compiled programs 
 
-### Linux and macOS
+#### Linux and macOS
 
 ```bash
 # .NET 6.0
 export PATH=$PWD/bin/net60/:$PATH
 ```
 
-### Windows 
+#### Windows 
 
 ```powershell
 # .NET 6.0
