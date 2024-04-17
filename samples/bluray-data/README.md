@@ -11,7 +11,7 @@ A command line tool for formatting and recording data to Blu-ray Disc (e.g. BD-R
 export PATH=$PWD/bin/net60/:$PATH
 ```
 
-#### Windows 
+### Windows 
 
 ```powershell
 # .NET 6.0
