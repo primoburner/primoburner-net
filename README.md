@@ -38,4 +38,21 @@ See [Build on macOS](./docs/build-mac.md)
 
 See [README](./samples/README.md) in the `samples` subdirectory. 
 
-## 
+## Linux
+
+#### Download PrimoBurner .NET Core
+
+See [Download .NET Core for Linux](./docs/download-primoburner-net-core-linux.md) 
+
+#### Setup
+
+See [Setup for Linux](./docs/setup-linux.md)
+
+#### Build
+
+See [Build on Linux](./docs/build-linux.md)
+
+#### Run
+
+See [README](./samples/README.md) in the `samples` subdirectory. 
+
