@@ -4,13 +4,6 @@ A command line tool for formatting and recording data to Blu-ray Disc (e.g. BD-R
 
 ### Set PATH to compiled programs 
 
-#### Linux and macOS
-
-```bash
-# .NET 6.0
-export PATH=$PWD/bin/net60/:$PATH
-```
-
 #### Windows 
 
 ```powershell
@@ -21,6 +14,12 @@ $env:Path = "$( (pwd).Path )/bin/net60/;" + $env:Path
 
 # .NET 4.8
 $env:Path = "$( (pwd).Path )/bin/net48/;" + $env:Path 
+```
+#### macOS / Linux
+
+```bash
+# .NET 6.0
+export PATH=$PWD/bin/net60/:$PATH
 ```
 
 ### List options
