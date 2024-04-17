@@ -18,14 +18,6 @@ chmod +x dotnet-install.sh
 
 or download and install from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-### .NET Runtime 7.0
-
-```
-./dotnet-install.sh --runtime dotnet --channel 7.0 --version latest
-```
-
-or download and install from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-
 ### .NET Runtime 8.0 (LTS)
 
 ```
@@ -42,14 +34,6 @@ This is needed by the Visual Studio Code C# extension. Install with `dotnet-inst
 
 ```bash
 ./dotnet-install.sh --channel 6.0
-```
-
-### .NET SDK 7.0
-
-This is needed by the Visual Studio Code C# extension. Install with `dotnet-install.sh` script:
-
-```bash
-./dotnet-install.sh --channel 7.0
 ```
 
 ### .NET SDK 8.0
