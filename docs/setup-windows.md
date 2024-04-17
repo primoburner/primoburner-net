@@ -18,14 +18,6 @@ Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-insta
 
 or download and install from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-### .NET Runtime 7.0
-
-```powershell
-./dotnet-install.ps1 -InstallDir '~/.dotnet' -Channel 7.0 -Runtime dotnet -Version latest
-```
-
-or download and install from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-
 ### .NET Runtime 8.0 (LTS)
 
 ```powershell
@@ -57,12 +49,6 @@ Start-BitsTransfer `
 ./dotnet-install.ps1 -InstallDir '~/.dotnet' -Channel 6.0
 ```
 
-### .NET 7.0
-
-```powershell
-./dotnet-install.ps1 -InstallDir '~/.dotnet' -Channel 7.0
-```
-
 ### .NET 8.0
 
 ```powershell
@@ -76,4 +62,10 @@ Test that you can run the `dotnet` CLI (command line interface)
 ```powershell
 dotnet --version
 dotnet new console --help
+```
+
+List available runtimes:
+
+```powershell
+dotnet --list-runtimes
 ```

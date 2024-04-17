@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' ">true</IsWindows> 
+    <IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' ">true</IsMacOS> 
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">true</IsLinux> 
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsX64 Condition="$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture) == X64">true</IsX64>
+    <IsArm64 Condition="$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture) == Arm64">true</IsArm64>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Platforms>x64;ARM64</Platforms> 
+    <OutputPath>../../bin</OutputPath> 
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsLinux)' == 'true' ">
+    <TargetFrameworks>net60</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsMacOS)' == 'true' ">
+    <TargetFrameworks>net60</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsWindows)' == 'true' ">
+    <TargetFrameworks>net60;net48</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PB_PLATFORM Condition=" '$(IsX64)' == 'true' ">x64</PB_PLATFORM>
+    <PB_PLATFORM Condition=" '$(IsArm64)' == 'true' ">arm64</PB_PLATFORM>
+  </PropertyGroup>  
+
+  <Target Name="CopyPrimoBurnerCore_Linux" AfterTargets="AfterBuild" Condition=" '$(IsLinux)' == 'true' ">
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/libPrimoBurner64.so" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner.clrcore.$(PB_PLATFORM).dll" DestinationFolder="$(OutputPath)" />
+  </Target>
+
+  <Target Name="CopyPrimoBurnerCore_macOS" AfterTargets="AfterBuild" Condition=" '$(IsMacOS)' == 'true' ">
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/libPrimoBurner.dylib" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner.clrcore.$(PB_PLATFORM).dll" DestinationFolder="$(OutputPath)" />
+  </Target>
+
+  <Target Name="CopyPrimoBurnerCore_Windows_net60" AfterTargets="AfterBuild" Condition=" '$(IsWindows)|$(TargetFramework)' == 'true|net60' ">
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner64.dll" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner.clrcore.$(PB_PLATFORM).dll" DestinationFolder="$(OutputPath)" />
+  </Target>
+
+  <Target Name="CopyPrimoBurnerCore_Windows_net48" AfterTargets="AfterBuild" Condition=" '$(IsWindows)|$(TargetFramework)' == 'true|net48' ">
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner64.dll" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)../../sdk/$(TargetFramework)/PrimoBurner.clr4.$(PB_PLATFORM).dll" DestinationFolder="$(OutputPath)" />
+  </Target>
+
+</Project>

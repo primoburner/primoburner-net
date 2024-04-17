@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' ">true</IsWindows> 
+    <IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' ">true</IsMacOS> 
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">true</IsLinux> 
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsX64 Condition="$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture) == X64">true</IsX64>
+    <IsArm64 Condition="$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture) == Arm64">true</IsArm64>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>x64;ARM64</Platforms> 
+    <OutputPath>../../bin</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsLinux)' == 'true' ">
+    <TargetFrameworks>net60</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsMacOS)' == 'true' ">
+    <TargetFrameworks>net60</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsWindows)' == 'true' ">
+    <TargetFrameworks>net60;net48</TargetFrameworks>
+  </PropertyGroup>  
+
+  <PropertyGroup>
+    <PB_PLATFORM Condition=" '$(IsX64)' == 'true' ">x64</PB_PLATFORM>
+    <PB_PLATFORM Condition=" '$(IsArm64)' == 'true' ">arm64</PB_PLATFORM>
+  </PropertyGroup> 
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <Reference Include="PrimoBurner.clr4.$(PB_PLATFORM).dll">
+      <HintPath>../../bin/$(TargetFramework)/PrimoBurner.clr4.$(PB_PLATFORM).dll</HintPath>
+    </Reference>    
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net48' ">
+    <Reference Include="PrimoBurner.clrcore.$(PB_PLATFORM)">
+      <HintPath>../../bin/$(TargetFramework)/PrimoBurner.clrcore.$(PB_PLATFORM).dll</HintPath>
+    </Reference>    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleTables" Version="2.4.2" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+</Project>
