@@ -83,6 +83,46 @@ bluray-data format --full --force --device-index 0
 
 ### Burn
 
+#### Download test files
+
+##### Windows
+
+You need `wget`. Install with `winget`:
+
+```sh
+winget install wget
+```
+
+```powershell
+mkdir -p $HOME/DataDisc/Hippo
+
+pushd $HOME/DataDisc/Hippo
+wget https://archive.org/download/WildlifeVideoMedia/Hippo.ogv 
+popd
+
+mkdir -p $HOME/DataDisc/Elephant
+
+pushd $HOME/DataDisc/Elephant
+wget https://archive.org/download/WildlifeVideoMedia/Elephant.ogv
+popd
+```
+
+##### macOS / Linux
+
+```sh
+mkdir -p $HOME/DataDisc/Hippo
+
+pushd $HOME/DataDisc/Hippo
+wget https://archive.org/download/WildlifeVideoMedia/Hippo.ogv 
+popd
+
+mkdir -p $HOME/DataDisc/Elephant
+
+pushd $HOME/DataDisc/Elephant
+wget https://archive.org/download/WildlifeVideoMedia/Elephant.ogv
+popd
+```
+
 #### Start a new disc
 
 > NOTE: We use the `--overwrite` flag  to start a new disc. 
