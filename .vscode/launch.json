@@ -5,10 +5,10 @@
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
-            "name": "bluray-data (.NET 6.0)",
+            "name": "bluray-data (.NET 6.0) x64",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build samples - Debug",
+            "preLaunchTask": "build samples - Debug x64",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/bin/net60/bluray-data.dll",
             "args": ["list-devices"],
