@@ -3,7 +3,7 @@
 Change to the directory where you cloned this repository:
 
 ```bash
-cd primoburner-cpp
+cd primoburner-net
 ```
 
 ## PrimoBurner Core
